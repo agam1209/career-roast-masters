@@ -1,0 +1,2 @@
+/* Single top-level @import only — avoids PostCSS "@import must precede @source" when merged with styles.css */
+@import "../node_modules/tw-animate-css/dist/tw-animate.css";
