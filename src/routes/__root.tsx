@@ -35,6 +35,12 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { property: "og:title", content: "The Career Crematorium" },
+      { name: "twitter:title", content: "The Career Crematorium" },
+      { property: "og:description", content: "AI that roasts résumés, portfolios, and content." },
+      { name: "twitter:description", content: "AI that roasts résumés, portfolios, and content." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/40d7fa80-e9d8-4828-9dfb-697b1e0f4679/id-preview-0509c088--49183274-bd2d-4804-9696-1bc604132e14.lovable.app-1776577129051.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/40d7fa80-e9d8-4828-9dfb-697b1e0f4679/id-preview-0509c088--49183274-bd2d-4804-9696-1bc604132e14.lovable.app-1776577129051.png" },
     ],
     links: [
       {
