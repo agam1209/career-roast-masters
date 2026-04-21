@@ -20,15 +20,15 @@ const styles = read("src/styles.css");
 const tailwindSource = read("src/tailwind-source.css");
 const theme = read("src/theme.css");
 
+// Allow tw-animate import inside tailwind-source.css only, but not in styles.css or theme.css
 const forbidden =
   /@import\s+["']tw-animate-css["']/.test(styles) ||
-  /@import\s+["']tw-animate-css["']/.test(tailwindSource) ||
   /@import\s+["']tw-animate-css["']/.test(theme);
 
 if (forbidden) {
   console.error(
-    "assert-css: @import tw-animate-css must not appear in styles.css / tailwind-source.css / theme.css.\n" +
-      "Use src/tw-animate.entry.css and __root.tsx <link> only.",
+    "assert-css: @import tw-animate-css must not appear in styles.css or theme.css.\n" +
+      "If you need tw-animate in the build, place the import in src/tailwind-source.css before @source.",
   );
   process.exit(1);
 }
@@ -43,9 +43,17 @@ if (!tailwindOrder) {
   process.exit(1);
 }
 
-if (/tw-animate-css/.test(tailwindSource)) {
-  console.error("assert-css: tailwind-source.css must not reference tw-animate-css");
-  process.exit(1);
+// If tailwind-source.css references tw-animate-css, enforce it appears after tailwindcss import and before @source
+if (/@import\s+["']tw-animate-css["']/.test(tailwindSource)) {
+  const idxTailwind = tailwindSource.indexOf(`@import "tailwindcss"`);
+  const idxTw = tailwindSource.indexOf(`@import "tw-animate-css"`);
+  const idxSource = tailwindSource.indexOf("@source");
+  if (!(idxTailwind >= 0 && idxTw >= 0 && idxSource >= 0 && idxTailwind < idxTw && idxTw < idxSource)) {
+    console.error(
+      "assert-css: if tailwind-source.css references tw-animate-css, it must appear after @import tailwindcss and before @source.",
+    );
+    process.exit(1);
+  }
 }
 
 console.log("assert-css: OK");

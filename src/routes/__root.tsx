@@ -1,7 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import twAnimateCss from "../../node_modules/tw-animate-css/dist/tw-animate.css?url";
 
 function NotFoundComponent() {
   return (
@@ -43,9 +42,8 @@ export const Route = createRootRoute({
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/40d7fa80-e9d8-4828-9dfb-697b1e0f4679/id-preview-0509c088--49183274-bd2d-4804-9696-1bc604132e14.lovable.app-1776577129051.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/40d7fa80-e9d8-4828-9dfb-697b1e0f4679/id-preview-0509c088--49183274-bd2d-4804-9696-1bc604132e14.lovable.app-1776577129051.png" },
     ],
-    links: [
+      links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "stylesheet", href: twAnimateCss },
     ],
   }),
   shellComponent: RootShell,
