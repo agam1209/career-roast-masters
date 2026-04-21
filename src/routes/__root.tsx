@@ -1,7 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import twAnimateCss from "../tw-animate.entry.css?url";
+import twAnimateCss from "../../node_modules/tw-animate-css/dist/tw-animate.css?url";
 
 function NotFoundComponent() {
   return (

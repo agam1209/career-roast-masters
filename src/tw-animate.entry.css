@@ -1,2 +1,3 @@
-/* Single top-level @import only — avoids PostCSS "@import must precede @source" when merged with styles.css */
-@import "../node_modules/tw-animate-css/dist/tw-animate.css";
+/* tw-animate is imported directly from the package as a URL in __root.tsx
+	to avoid @import rules appearing after other at-rules during bundling. */
+
